@@ -1,4 +1,4 @@
-const { DATABASE_HOST, DATABASE_NAME } = require("./enviroment");
+const { DATABASE_HOST, DATABASE_NAME, DATABASE_HOST_LIVE } = require("./enviroment");
 
 const MongoClient = require("mongodb").MongoClient;
 
@@ -6,7 +6,7 @@ let mongo;
 
 const connect = callback => {
     MongoClient.connect(
-        DATABASE_HOST,
+        DATABASE_HOST_LIVE || DATABASE_HOST,
         { useNewUrlParser: true, useUnifiedTopology: true },
         function(e, client) {
             if (e) {
